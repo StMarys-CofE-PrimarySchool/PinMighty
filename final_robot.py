@@ -49,15 +49,21 @@ while barcode:
 		details = stock[barcode]
 		product_name = details[0]
 
-		if details[1] == "PC":	
-			recycle = "paper and card"
-		elif details[1] == "PL":
-			recycle = "plastic"
-		else:
-			recycle = "metal"
-
-	screen_say ("{0}\n{1}".format(product_name, recycle))
-	say ("Scanned {0} which is recyclable as {1}.".format(product_name, recycle))
+                if details[1] =="NR":
+                        screen_say ("{0}\nnot recyclable".format(product_name))
+                        say ("Scanned {0} which is not recyclable.".format(product_name))
+                else:
+                        if details[1] == "PC":	
+                        	recycle = "paper and card"
+                        elif details[1] == "PL":
+                        	recycle = "plastic"
+                        elif details[1] == "GL":
+                        	recycle = "glass"
+                        else:
+                        	recycle = "metal"
+        
+                        screen_say ("{0}\n{1}".format(product_name, recycle))
+                        say ("Scanned {0} which is recyclable as {1}.".format(product_name, recycle))
 
 
 	tmp_code = sys.stdin.readline()
